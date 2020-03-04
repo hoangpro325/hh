@@ -816,7 +816,7 @@ def get_playable_url(url):
 		yid = match[0][len(match[0])-1].replace('v/', '')
 		url = 'plugin://plugin.video.youtube/play/?video_id=%s' % yid
 	elif "thvli.vn/backend/cm/detail/" in url:
-		get_thvl = "https://docs.google.com/spreadsheets/d/13VzQebjGYac5hxe1I-z1pIvMiNB0gSG7oWJlFHWnqsA/export?format=tsv&gid=1287121588"
+		get_thvl = "https://docs.google.com/spreadsheets/d/1fcEqtw7WWGkN_8HtBqSP6wV61exZqDOlHGFEbpp9Em8/export?format=tsv&gid=1287121588"
 		try:
 			(resp, content) = http.request(
 				get_thvl, "GET"
@@ -849,7 +849,7 @@ def get_playable_url(url):
 				pass
 	elif "sphim.tv" in url:
 		http.follow_redirects = False
-		get_sphim = "https://docs.google.com/spreadsheets/d/13VzQebjGYac5hxe1I-z1pIvMiNB0gSG7oWJlFHWnqsA/export?format=tsv&gid=1082544232"
+		get_sphim = "https://docs.google.com/spreadsheets/d/1fcEqtw7WWGkN_8HtBqSP6wV61exZqDOlHGFEbpp9Em8/export?format=tsv&gid=1082544232"
 		try:
 			(resp, content) = http.request(
 				get_sphim, "GET"
