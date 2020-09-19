@@ -222,34 +222,6 @@ def getItems(url_path="0", tq="select A,B,C,D,E"):
 			elif any(service in item["path"] for service in ["acelisting.in"]):
 				item["path"] = pluginrootpath + \
 					"/acelist/" + urllib.quote_plus(item["path"])
-			elif any(service in item["path"] for service in ["fshare.vn/folder"]):
-				item["path"] = pluginrootpath + "/fshare/" + \
-					urllib.quote_plus(item["path"].encode("utf8"))
-				# item["path"] = "plugin://plugin.video.xshare/?mode=90&page=0&url=" + urllib.quote_plus(item["path"])
-			elif any(service in item["path"] for service in ["4share.vn/d/"]):
-				item["path"] = "plugin://plugin.video.xshare/?mode=38&page=0&url=" + \
-					urllib.quote_plus(item["path"])
-			elif any(service in item["path"] for service in ["4share.vn/f/"]):
-				# elif any(service in item["path"] for service in ["4share.vn/f/", "fshare.vn/file"]):
-				item["path"] = "plugin://plugin.video.xshare/?mode=3&page=0&url=" + \
-					urllib.quote_plus(item["path"])
-				item["is_playable"] = True
-				item["info"] = {"type": "video"}
-				item["path"] = pluginrootpath + "/play/" + urllib.quote_plus(item["path"])
-			elif "youtube.com/channel" in item["path"]:
-				# https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ
-				yt_route = "ytcp" if "playlists" in item["path"] else "ytc"
-				yt_cid = re.compile("youtube.com/channel/(.+?)$").findall(item["path"])[0]
-				item["path"] = "plugin://plugin.video.kodi4vn.launcher/%s/%s/" % (
-					yt_route, yt_cid)
-				item["path"] = item["path"].replace("/playlists", "")
-			elif "youtube.com/playlist" in item["path"]:
-				# https://www.youtube.com/playlist?list=PLFgquLnL59alCl_2TQvOiD5Vgm1hCaGSI
-				yt_pid = re.compile("list=(.+?)$").findall(item["path"])[0]
-				item["path"] = "plugin://plugin.video.kodi4vn.launcher/ytp/%s/" % yt_pid
-			elif any(ext in item["path"] for ext in [".png", ".jpg", ".bmp", ".jpeg"]):
-				item["path"] = "plugin://plugin.video.kodi4vn.launcher/showimage/%s/" % urllib.quote_plus(
-					item["path"])
 			elif re.search("\.ts$", item["path"]):
 				item["path"] = "plugin://plugin.video.f4mTester/?url=%s&streamtype=TSDOWNLOADER&use_proxy_for_chunks=True&name=%s" % (
 					urllib.quote(item["path"]),
@@ -428,7 +400,7 @@ def Section(path="0", tracking_string="Home"):
 @plugin.route('/add-playlist/<tracking_string>')
 def AddPlaylist(tracking_string="Add Playlist"):
 	sheet_url = plugin.keyboard(
-		heading='Nhập URL của Google Spreadsheet (có hỗ trợ link rút gọn như bit.ly, goo.gl)')
+		heading='Nhập URL của Google Spreadsheet (hỗ trợ link rút gọn như bit.ly, goo.gl)')
 	if sheet_url:
 		if not re.match("^https*://", sheet_url):
 			sheet_url = "https://" + sheet_url
@@ -452,8 +424,9 @@ def AddPlaylist(tracking_string="Add Playlist"):
 			line1 = "Vui lòng nhập URL hợp lệ. Ví dụ dạng đầy đủ:"
 			line2 = "http://docs.google.com/spreadsheets/d/xxx/edit#gid=###"
 			line3 = "Hoặc rút gọn: http://bit.ly/xxxxxx hoặc http://goo.gl/xxxxx"
+			line4 = "[COLOR yellow]Phân biệt rõ các KÝ TỰ,SỐ,chữ cái viết HOA và THƯỜNG[/COLOR]"
 			dlg = xbmcgui.Dialog()
-			dlg.ok("URL không hợp lệ!!!", line1, line2, line3)
+			dlg.ok("URL không hợp lệ!!!", line1, line2, line3,line4)
 
 
 @plugin.route('/acelist/<path>/<tracking_string>')
