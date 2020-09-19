@@ -450,10 +450,10 @@ def AddPlaylist(tracking_string="Add Playlist"):
 			xbmc.executebuiltin('Container.Refresh')
 		except:
 			line1 = "Bạn cần nhập URL hợp lệ,nhớ Phân biệt rõ các KÝ TỰ,SỐ,chữ cái viết HOA và THƯỜNG"
-			line2 = "http://docs.google.com/spreadsheets/d/xxx/edit#gid=###"
-			line3 = "Hoặc rút gọn: http://bit.ly/xxxxxx hoặc http://goo.gl/xxxxx"
+			line2 = "VÍ DỤ: http://docs.google.com/spreadsheets/d/xxx/edit#gid=###"
+			line3 = "Hoặc link rút gọn: http://bit.ly/xxxxxx hoặc http://goo.gl/xxxxx"
 			dlg = xbmcgui.Dialog()
-			dlg.ok("URL Chưa Đúng!!!", line1, line2, line3)
+			dlg.ok("URL Chưa Chính Xác!Vui Lòng nhập Lại", line1, line2, line3)
 
 
 @plugin.route('/acelist/<path>/<tracking_string>')
