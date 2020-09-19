@@ -450,7 +450,7 @@ def AddPlaylist(tracking_string="Add Playlist"):
 			xbmc.executebuiltin('Container.Refresh')
 		except:
 			line1 = "Bạn cần nhập URL hợp lệ,nhớ Phân biệt rõ các KÝ TỰ,SỐ,chữ cái viết HOA và THƯỜNG"
-			line2 = "VÍ DỤ: http://docs.google.com/spreadsheets/d/xxx/edit#gid=###"
+			line2 = "http://docs.google.com/spreadsheets/d/xxx/edit#gid=###"
 			line3 = "Hoặc link rút gọn: http://bit.ly/xxxxxx hoặc http://goo.gl/xxxxx"
 			dlg = xbmcgui.Dialog()
 			dlg.ok("URL Chưa Chính Xác!Vui Lòng nhập Lại", line1, line2, line3)
@@ -1138,7 +1138,7 @@ def GetFShareCred():
 			dialog = xbmcgui.Dialog()
 			yes = dialog.yesno(
 				'Đăng nhập không thành công!\n',
-				'[COLOR yellow]Bạn cần nhập tài khoản VIP FShare để xem! Liên hệ qua**FB:TRAN HUY HOANG HOẶC ZALO:0974 090 325 để đăng ký tài khoản VIP ngay bây giờ![/COLOR]',
+				'[COLOR yellow]Bạn cần nhập tài khoản VIP FShare để xem! Liên hệ qua**Facebook: TRAN HUY HOANG HOẶC ZALO:0974 090 325 để đăng ký tài khoản VIP ngay bây giờ![/COLOR]',
 				yeslabel='OK, Nhập Ngay',
 				nolabel='Bỏ Qua'
 			)
