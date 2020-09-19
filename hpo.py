@@ -438,7 +438,7 @@ def AddPlaylist(tracking_string="Add Playlist"):
 				"/d/(.+?)/.+?gid=(\d+)").findall(resp["content-location"])[0]
 			match_passw = re.search('passw=(.+?)($|&)', resp["content-location"])
 			playlists = plugin.get_storage('playlists')
-			name = plugin.keyboard(heading='Đặt tên cho Playlist')
+			name = plugin.keyboard(heading='Đặt tên cho Playlist tùy ý')
 
 			item = "[[COLOR yellow]%s[/COLOR]] %s@%s" % (name, gid, sid)
 			if match_passw:
@@ -449,11 +449,11 @@ def AddPlaylist(tracking_string="Add Playlist"):
 				playlists["sections"] = [item]
 			xbmc.executebuiltin('Container.Refresh')
 		except:
-			line1 = "Vui lòng nhập URL hợp lệ.Phân biệt rõ các KÝ TỰ,SỐ,chữ cái viết HOA và THƯỜNG"
+			line1 = "Bạn cần nhập URL hợp lệ,nhớ Phân biệt rõ các KÝ TỰ,SỐ,chữ cái viết HOA và THƯỜNG"
 			line2 = "http://docs.google.com/spreadsheets/d/xxx/edit#gid=###"
 			line3 = "Hoặc rút gọn: http://bit.ly/xxxxxx hoặc http://goo.gl/xxxxx"
 			dlg = xbmcgui.Dialog()
-			dlg.ok("URL không hợp lệ!!!", line1, line2, line3)
+			dlg.ok("URL Chưa Đúng!!!", line1, line2, line3)
 
 
 @plugin.route('/acelist/<path>/<tracking_string>')
